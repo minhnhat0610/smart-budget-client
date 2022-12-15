@@ -1,0 +1,176 @@
+
+
+#add-transaction-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+    #form-wrapper{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #form-wrapper .content-container{
+        height: auto;
+        padding: 1rem 0%;
+        position: relative;
+    }
+
+    #submit-loading{
+        display: none;
+    }
+
+    .display-loading{
+        display: flex !important;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    #form-wrapper .currency-exchange{
+        height: auto;
+    }
+
+    #form-wrapper .content-container form{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem 0%;
+    }
+
+        .input-row{
+            display: flex;
+            flex-direction: column;
+            padding: 2% 5%;
+            gap: 0.5rem;
+        }
+
+        .input-row select{
+            font-size: var(--head2);
+            font-weight: 500;
+        }
+
+        .input-row label{
+            font-size: var(--head2);
+            text-transform: capitalize;
+        }
+
+        .input-and-error{
+            display: flex;
+            align-items: center;
+            gap: 5%;
+        }
+
+            #option-icon{
+                display: inline-block;
+                margin-left: 0px;
+                font-size: var(--head2);
+            }
+            .error-icon {
+                font-size: var(--head1);
+                color: var(--negativeValuesColor);
+                margin-left: auto;
+                display: none !important;
+            }
+            
+            .display-error-icon{
+                display: block !important;
+            }
+
+            .input-and-error option{
+                color: black;
+                font-weight: 500;
+            }
+
+            .input{
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid var(--secondaryFontColor);
+                padding: 0px;
+                max-height: 0px;
+                transition: 300ms ease-in-out;
+                width: 70%;
+                
+            }
+            .input[type="text"]{
+                text-transform: capitalize;
+            }
+
+            .input:focus{
+                border-bottom: 2px solid var(--positiveValuesColor);
+            }
+
+            .input:focus, .input:valid{
+                outline: none;
+                max-height: none;
+                padding: 1% 5%;
+
+            }
+
+            .input:focus ~ label{
+                font-weight: 500;
+            }
+
+    #add-transaction-btn{
+        color: white;
+        background: rgb(132,73,251);
+        background: linear-gradient(90deg, rgba(132,73,251,1) 0%, rgba(238,56,203,1) 100%);
+        border: none;
+        border-radius: 50px;
+        padding: 2% 10%;
+        font-size: var(--head2);
+        text-transform: capitalize;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .disable-submit-btn{
+        pointer-events: none !important;
+    }
+
+/*======================== Media Queries ======================= */
+
+    
+/* Small screen tablets */
+@media screen and (max-width: 350px) {
+    html,body{
+        font-size: 12px;
+    }
+}
+
+/* Small screen laptop */
+@media screen and (min-width: 1000px) {
+    #form-wrapper .content-container form{
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0rem;
+    }
+    
+    .input-row{
+        min-width: 50%;
+    }
+
+}
+
+/* large screen laptop */
+@media screen and (min-width: 1200px) {
+    #add-transaction-btn{
+        padding: 1% 5%;
+    }
+}
+
+/* Extra-large screen laptop */
+@media screen and (min-width: 1600px) {
+    
+}
+
+/* XXL screen laptop */
+@media screen and (min-width: 1800px) {
+
+}

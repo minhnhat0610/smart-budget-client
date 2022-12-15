@@ -1,10 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import "./index.css"
+import "./addtransaction.css"
+import "@fortawesome/fontawesome-free/css/all.css"
+import "@fortawesome/fontawesome-free/css/regular.css"
+import { BrowserRouter } from "react-router-dom";
+import {createRoot} from "react-dom/client"
 
-ReactDOM.render(
-  <React.StrictMode>
+const container = document.getElementById("root")
+const root = createRoot(container)
+root.render(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </BrowserRouter>,
 );
