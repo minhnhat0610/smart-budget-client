@@ -97,7 +97,7 @@
                 max-height: 0px;
                 transition: 300ms ease-in-out;
                 width: 70%;
-                
+                border-radius: 0px;
             }
             .input[type="text"]{
                 text-transform: capitalize;

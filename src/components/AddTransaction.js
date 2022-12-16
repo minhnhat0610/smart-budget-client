@@ -41,7 +41,8 @@ const AddTransaction = () => {
 
     useEffect(()=>{
         if(loadingScreen.current){
-            if(submitting){
+            if(submitting === true){
+                console.log("this is call")
                 // turn on submitting loading
                 DisplaySubmitLoading()
                 //submit the form to server
@@ -85,13 +86,18 @@ const AddTransaction = () => {
     }
 
     const SumbitBtnClickHandle = () => {
-        setSubmitting(true)
+        if(validForm.length >= 4){
+            setSubmitting(true)
+        }
+        else{
+            alert("Invalid Form")
+            setSubmitting(false)
+        }
     }
 
 
 
     const SubmitTransaction = async () => {
-        if(validForm.length >= 4 && submitting){
             console.log("Valid Form")
             try{
                 const sentData = CollectInputValues(validForm)
@@ -135,12 +141,6 @@ const AddTransaction = () => {
                 setSubmitting(false)
             }
            
-           
-        }
-        else{
-            alert("Invalid Form")
-            setSubmitting(false)
-        }
     }
 
     const UdpateBalanceToServer = (newBalance) => {
