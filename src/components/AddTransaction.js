@@ -95,24 +95,34 @@ const AddTransaction = () => {
             console.log("Valid Form")
             try{
                 const sentData = CollectInputValues(validForm)
-                const newBalance = ReCalculateTotalBalance(sentData.data[0]["transaction-amount"])
-    
-                try{
-                    console.log(sentData)
-                    const TransactionPOST = await SendTransactionToServer(sentData)
-                    const BalanceUpdatePOST = await UdpateBalanceToServer(newBalance)
 
-                    
-                    setTotalBalance(newBalance)
-                    setBalanceData((prev)=>{
-                        prev["total-balance"] = newBalance
-                        return prev
-                    })
-                    alert("Transaction Update Successfully!")
+                // Covert amount to negative value if category is a deposit transaction
+                const category = sentData.data[0]["categories-selections"]
+                if(category === "Deposit"){
+                    sentData.data[0]["transaction-amount"] *= -1
                 }
-                catch(err){
-                    console.log(err)
-                    alert("SERVER_ERROR!!!")
+
+                const newBalance = ReCalculateTotalBalance(sentData.data[0]["transaction-amount"])
+
+                if(sentData && newBalance){
+                    try{
+                        const TransactionPOST = await SendTransactionToServer(sentData)
+                        const BalanceUpdatePOST = await UdpateBalanceToServer(newBalance)
+    
+                        
+                        setTotalBalance(newBalance)
+                        setBalanceData((prev)=>{
+                            prev["total-balance"] = newBalance
+                            return prev
+                        })
+                        alert("Transaction Update Successfully!")
+                    }
+                    catch(err){
+                        console.log(err)
+                        alert("SERVER_ERROR!!!")
+                    }
+                }else{
+                    throw "Transaction is corrupted. Try Again!"
                 }
                 
             }

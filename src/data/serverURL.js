@@ -1,4 +1,4 @@
-const domain = "https://smartbudgetapi.onrender.com/api"
+const domain =   "https://smartbudgetapi.onrender.com/api"
 // "http://localhost:5000/api"
 const exchangeRateAPI = "https://api.exchangerate.host"
 
